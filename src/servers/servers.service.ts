@@ -18,14 +18,21 @@ export class ServersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} server`;
+    return this.db.server.findUnique({
+      where: {id}
+    });
   }
 
   update(id: number, updateServerDto: UpdateServerDto) {
-    return `This action updates a #${id} server`;
+    return this.db.server.update({
+      where : {id},
+      data: updateServerDto
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} server`;
+    return this.db.server.delete({
+      where: {id}
+    });
   }
 }
